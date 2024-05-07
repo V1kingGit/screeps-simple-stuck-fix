@@ -115,12 +115,7 @@ Creep.prototype.moveTo = function(firstArg, secondArg, opts)
         
             const [x, y, roomName] = fetchXYArguments(firstArg, secondArg)
             opts.range = opts.range || 1;
-            if(roomName)
-            {
-                if(!this.pos.inRangeTo(new RoomPosition(x, y, roomName), opts.range))
-                    this.hasMoved = true;
-            }
-            else if(!this.pos.inRangeTo(x, y, opts.range))
+            if(!this.pos.inRangeTo(new RoomPosition(x, y, roomName || this.room.name), opts.range))
                 this.hasMoved = true;
             break;
     }
